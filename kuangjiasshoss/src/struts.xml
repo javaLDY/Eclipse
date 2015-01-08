@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.i18n.reload" value="false" />
+    <constant name="struts.custom.i18n.resources" value="globalMessages" />
+    <package name="default" namespace="/" extends="struts-default">
+    	<action name="test" class="com.shinowit.action.TestAction" method="test">
+    		<result name="success">/tset.jsp</result>
+    	</action>
+    	
+    	<action name="test1" class="com.shinowit.action.TestAction" method="test1">
+    		<result name="success">/success.html</result>
+    	</action>
+    </package>
+</struts>
