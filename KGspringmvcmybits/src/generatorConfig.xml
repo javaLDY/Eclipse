@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D://jars//jdbc//mysql-connector-java-5.1.32-bin.jar" />
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+        <plugin type="com.shinowit.mybatis.plugin.SelectByPage4MySqlPlugin"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/ssh?useUnicode=true"
+                        userId="root" password="shinow">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.shinowit.entity"
+                            targetProject="KGspringmvcmybits/src">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+
+        <!--需要与spring整合时必须保证xml文件与mapper接口在同一个package下面-->
+        <sqlMapGenerator targetPackage="com.shinowit.dao.mapper"
+                         targetProject="KGspringmvcmybits/src">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.shinowit.dao.mapper" targetProject="KGspringmvcmybits/src">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="student">
+            <generatedKey column="student_id" sqlStatement="MySql"
+                          identity="true" />
+        </table>
+
+        <table tableName="teacher">
+            <generatedKey column="teacher_id" sqlStatement="MySql"
+                          identity="true" />
+        </table>
+    </context>
+</generatorConfiguration>
+
+
