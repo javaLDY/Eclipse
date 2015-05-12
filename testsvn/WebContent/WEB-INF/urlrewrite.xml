@@ -4,10 +4,10 @@
         "http://tuckey.org/res/dtds/urlrewrite3.0.dtd">
         
 	<urlrewrite>
-		<rule>
-		<!--所有配置如下正则表达式的请求  -->
+		<!-- <rule>
+		所有配置如下正则表达式的请求 
 			<from>/userinf-(\w*).html</from>
-			<!-- 将被forward盗如下的界面，其中$1代表上面第一个正则表达式所匹配的字符串 --> 
+			将被forward盗如下的界面，其中$1代表上面第一个正则表达式所匹配的字符串 
 			<to type="forward">/urlwrite.jsp?username=$1</to>
-		</rule>
+		</rule> -->
 	</urlrewrite>        

@@ -45,13 +45,13 @@ public class TestListener implements ServletContextListener{
 			String sql = "select * from teacher ";
 			pstmt = conn.prepareStatement(sql);
 			re = pstmt.executeQuery();
-			TeacherModel tea = new TeacherModel();
+			
 			while(re.next()){
+				TeacherModel tea = new TeacherModel();
 				tea.setTeacherId(re.getInt("teacher_id"));
 				tea.setTeacherName(re.getString("name"));
 				System.out.println("教师编码:"+tea.getTeacherId()+"教师名字:"+tea.getTeacherName());
-				HttpSession session = null;
-				session.setAttribute("tea", tea);
+				
 			}
 			
 		} catch (ClassNotFoundException e) {

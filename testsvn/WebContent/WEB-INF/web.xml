@@ -12,16 +12,19 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	<filter>
+	<listener>
+		<listener-class>com.shinowit.test.TestListener</listener-class>
+	</listener>
+	<!-- <filter>
 		<filter-name>UrlRewriteFilter</filter-name>
 		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
-	</filter>
+	</filter> 
 	<filter-mapping>
 		<filter-name>UrlRewriteFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
-	</filter-mapping>
+	</filter-mapping>-->
 	<servlet>
 		<description></description>
 		<display-name>TestServlet</display-name>
