@@ -13,4 +13,7 @@ public interface UserImple {
 	
 	public boolean logininfoinsert(logininfo login);
 	
+	public List<logininfo> loginlist(String sessionid);
+	
+	public void updatelogin(logininfo login);
 }

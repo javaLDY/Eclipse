@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.jni.User;
+
 import com.shinowit.impl.UserImple;
 import com.shinowit.model.UserInfo;
 import com.shinowit.model.logininfo;
@@ -123,8 +125,70 @@ public class BasicDao implements UserImple{
 
 	@Override
 	public boolean logininfoinsert(logininfo login) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet re = null;
+		boolean result =false;
+		try {
+			conn = getConnection();
+			String sql = "insert into logininfo(id,ip,page,username) values(?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setObject(1, login.getId());
+			pstmt.setObject(2, login.getIp());
+			pstmt.setObject(3, login.getPage());
+			pstmt.setObject(4, login.getUsername());
+			int a = pstmt.executeUpdate();
+			if(a>0){
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public List<logininfo> loginlist(String sessionid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet re = null;
+		List<logininfo> result = new ArrayList<logininfo>();
+		try {
+			conn = getConnection();
+			String sql = "select * from logininfo where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setObject(1, sessionid);
+			re = pstmt.executeQuery();
+			while(re.next()){
+				logininfo login = new logininfo();
+				login.setIp(re.getString("ip"));
+				result.add(login);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public void updatelogin(logininfo login) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet re = null;
+		try {
+			conn = getConnection();
+			String sql = "update logininfo set page=?,username=? where ip = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setObject(1, login.getPage());
+			pstmt.setObject(2, login.getUsername());
+			pstmt.setObject(3, login.getIp());
+			int a =pstmt.executeUpdate();
+			if(a>0){
+				System.out.println("更新成功");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

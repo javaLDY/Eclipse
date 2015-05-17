@@ -2,7 +2,7 @@ package com.shinowit.model;
 
 public class logininfo {
 
-	private int id;
+	private String id;
 	
 	private String page;
 	
@@ -10,11 +10,13 @@ public class logininfo {
 	
 	private String username;
 
-	public int getId() {
+	
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

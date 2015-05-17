@@ -15,5 +15,6 @@
 			<td>姓名</td>
 		</tr>
 	</table>
+	<a href="<%=request.getContextPath() %>/index.jsp">diaowo</a>
 </body>
 </html>
