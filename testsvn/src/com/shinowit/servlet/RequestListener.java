@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.shinowit.dao.BasicDao;
 import com.shinowit.model.logininfo;
 
-@WebListener
+//@WebListener
 public class RequestListener implements ServletRequestListener{
 
 	@Override
